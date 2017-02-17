@@ -1,0 +1,15 @@
+---
+- hosts: mysqlnode
+  become: yes
+  vars_files:
+    - ./vars/base-env.yml
+  tasks:
+    - name: Copy database sql file
+      copy:
+        src: ../web/mysql-create-all.sql
+        dest: /tmp
+    - name: Restore database
+      mysql_db:
+        name: "{{app_mysql_db_name}}"
+        state: import
+        target: /tmp/mysql-create-all.sql

@@ -1,0 +1,11 @@
+---
+mysql_ip: 192.168.88.11
+app_mysql_db_name: jvm
+
+tomcat_home: "/usr/local/tomcat"
+tomcat_service_name: tomcat8
+tomcat_port: 9898
+
+tomcat_user: tomcat
+tomcat_group: tomcat
+CATALINA_OPTS: "-Xloggc:{{gc_log_path}} -XX:+PrintGCDetails -Xms64m -Xmx64m -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:ParallelGCThreads=2 "

@@ -1,0 +1,17 @@
+- hosts: mysqlnode
+  become: yes
+  vars_files:
+    - ./vars/base-env.yml
+  roles:
+    - common
+    - mysql
+
+- hosts: webnode
+  become: yes
+  vars_files:
+    - ./vars/base-env.yml
+  roles:
+    - common
+    - jdk8
+    - tomcat8
+    - tomcat8-init

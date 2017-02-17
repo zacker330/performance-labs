@@ -1,0 +1,21 @@
+---
+- hosts: webnode
+  become: yes
+  vars_files:
+    - ./vars/base-env.yml
+  tasks:
+    - name: copy war file
+      copy:
+        src: "../files/web-1.0.war"
+        dest: "{{tomcat_home}}/webapps"
+        owner: "{{tomcat_user}}"
+        group: "{{tomcat_group}}"
+
+    - service:
+        name: "{{tomcat_service_name}}"
+        state: restarted
+      become: yes
+
+    - wait_for:
+        port: "{{tomcat_port}}"
+        delay: 10

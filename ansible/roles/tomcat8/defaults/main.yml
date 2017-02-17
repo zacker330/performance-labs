@@ -1,0 +1,16 @@
+---
+# defaults file for tomcat8
+tomcat8_download_url: http://apache.fayea.com/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz
+apache_tomcat8_version: apache-tomcat-8.5.11
+tomcat_service_name: tomcat8
+tomcat_port: 9898
+redirect_port: 8443
+connector_port: "{{tomcat_port}}"
+shutdown_port: 8005
+tomcat_home: "/usr/local/tomcat"
+tomcat_debug_port: 8787
+log_path: /var/log/tomcat8/
+tomcat_user: tomcat
+tomcat_group: tomcat
+gc_log_path: "{{log_path}}"
+CATALINA_OPTS: "-Xloggc:{{gc_log_path}} -XX:+PrintGCDetails -Xms32m -Xmx32m -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC"

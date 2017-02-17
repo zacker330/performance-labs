@@ -1,0 +1,5 @@
+---
+# tasks file for tomcat8-init
+- template: src="conf/server.xml" dest="{{tomcat_home}}/conf" owner={{ tomcat_user }} group={{ tomcat_group }}
+
+- template: src="conf/logging.properties" dest="{{tomcat_home}}/conf" owner={{ tomcat_user }} group={{ tomcat_group }}
